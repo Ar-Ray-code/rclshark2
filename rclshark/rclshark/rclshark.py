@@ -17,6 +17,15 @@ logger_flag = False
 
 # ----------------------------------------
 
+class setting_domain_id():
+    def __init__(self, domain_id):
+        os.environ['ROS_DOMAIN_ID'] = str(domain_id)
+        # print(os.environ['ROS_DOMAIN_ID'])
+    
+    def change_domain_id(self, domain_id):
+        os.environ['ROS_DOMAIN_ID'] = str(domain_id)
+        # print(os.environ['ROS_DOMAIN_ID'])
+
 class get_ip_for_rclshark():
     def __init__(self):
         pass
@@ -82,7 +91,14 @@ class pub_status(Node):
         parser = argparse.ArgumentParser(description='rclshark_node')
         parser.add_argument('--interface', type=str, default="", help='interface name')
         parser.add_argument('--const-ipv4', type=str, default="", help='ipv4 address')
+        parser.add_argument('--domain-id', type=int, default=0, help='domain id')
         args = parser.parse_args()
+
+        # set domain id
+        self.domain_id = int(args.domain_id)
+        domain = setting_domain_id(self.domain_id)
+        print("domain id: "+ str(self.domain_id))
+
 
         self.const_ip_flag = False
         self.interface_set_flag = False
