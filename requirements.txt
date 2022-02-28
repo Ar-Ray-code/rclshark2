@@ -1,0 +1,6 @@
+# for colcon build
+pytest
+lark-parser
+colcon-common-extensions
+
+netifaces

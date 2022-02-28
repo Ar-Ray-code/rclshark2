@@ -91,7 +91,7 @@ class pub_status(Node):
         parser = argparse.ArgumentParser(description='rclshark_node')
         parser.add_argument('--interface', type=str, default="", help='interface name')
         parser.add_argument('--const-ipv4', type=str, default="", help='ipv4 address')
-        parser.add_argument('--domain-id', type=int, default=0, help='domain id')
+        parser.add_argument('--domain-id', type=int, default=1, help='domain id')
         args = parser.parse_args()
 
         # set domain id

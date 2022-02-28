@@ -7,10 +7,10 @@
 # sudo bash ./install.bash uninstall
 
 PROJECT_DIR=$(cd $(dirname $0); pwd)
-TARGET_DIR='rclshark'
+TARGET_DIR='rclshark2'
 INSTALL_DIR='/opt'
-COMPUTER_MSGS_VERSION='v1.0.1'
-RCLSHARK_SMI_VERSION='v1.0.1'
+COMPUTER_MSGS_VERSION='v2.0.0'
+RCLSHARK_SMI_VERSION='v2.0.0'
 BIN='/usr/local/bin'
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
@@ -34,17 +34,15 @@ fi
 
 if [ "uninstall" = $1 ]; then
     echo "uninstall ..."
-    for service_file in $RCLSHARK_WS/src/rclshark/rclshark/service/*.service ; do
-        echo "uninstall" $service_file
-        FILE=`basename $service_file`
-
-        systemctl stop $FILE
-        systemctl disable $FILE
-        rm /etc/systemd/system/$FILE
-    done
+   
+    echo "uninstall rclshark2.service"
+    systemctl stop rclshark2.service
+    systemctl disable rclshark2.service
+    rm /etc/systemd/system/rclshark2.service
+    
     systemctl daemon-reload
     rm -rf $INSTALL_DIR/${TARGET_DIR}_ws/
-    rm $BIN/rclshark-smi
+    # rm $BIN/rclshark-smi
     echo "uninstalled"
     exit 0
 else 
@@ -63,12 +61,15 @@ if [ -z $ROS_DISTRO ]; then
     exit 1
 fi
 
+rm -rf $RCLSHARK_WS/src
 mkdir -p $RCLSHARK_WS/src
-cp -r $PROJECT_DIR/../rclshark/ $RCLSHARK_WS/src/rclshark/
+pip3 install -r $PROJECT_DIR/requirements.txt
 
-cd $RCLSHARK_WS && colcon build --symlink-install
+cp -r $PROJECT_DIR/ $RCLSHARK_WS/src/$TARGET_DIR/
 
-for service_file in $RCLSHARK_WS/src/rclshark/rclshark/service/*.service ; do
+cd $RCLSHARK_WS && colcon build
+
+for service_file in $RCLSHARK_WS/src/$TARGET_DIR/rclshark/service/rclshark2.service ; do
     echo "User=$USER" >> $service_file
 
     FILE=`basename $service_file`
@@ -78,10 +79,13 @@ for service_file in $RCLSHARK_WS/src/rclshark/rclshark/service/*.service ; do
     cp $service_file /etc/systemd/system/
     systemctl enable $FILE
 done
-cp $RCLSHARK_WS/src/rclshark/rclshark-smi/rclshark-smi.bash $BIN/rclshark-smi
-chmod +x $BIN/rclshark-smi
+
+rm -rf /opt/rclshark2_ws/build /opt/rclshark2_ws/log /opt/rclshark2_ws/src
+# cp $RCLSHARK_WS/src/rclshark/rclshark-smi/rclshark-smi.bash $BIN/rclshark-smi
+# chmod +x $BIN/rclshark-smi
 
 systemctl daemon-reload
+systemctl start rclshark2.service
 
 echo "                                                       (}                    "
 echo "                                                     ./ |                    "
@@ -111,8 +115,8 @@ sleep 1
 
 echo "------------------------------------------------------"
 echo "installation completed"
-echo "run 'sudo systemctl start rclshark.service' to start rclshark"
-echo "run 'rclshark-smi' to start rclshark-smi"
+# echo "run 'sudo systemctl start rclshark2.service' to start rclshark"
+# echo "run 'rclshark-smi' to start rclshark-smi"
 echo "------------------------------------------------------"
 
 exit 0
