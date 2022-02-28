@@ -45,6 +45,18 @@ rclshark is also a service server, and has a function to Repositoryrt computer s
 
 ### Installation
 
+#### Using install.bash (Automatic start)
+
+Installed ROS2
+
+If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
+
+```bash
+git clone https://github.com/Ar-Ray-code/rclshark2
+cd rclshark2
+sudo bash install.bash /opt/ros/foxy
+```
+
 #### ROS-Foxy Installation
 
 If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
@@ -69,18 +81,6 @@ colcon build
 source install/setup.bash
 ```
 
-#### Using install.bash (Automatic start)
-
-Installed ROS2
-
-If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
-
-```bash
-git clone https://github.com/Ar-Ray-code/rclshark2
-cd rclshark2
-sudo bash install.bash /opt/ros/foxy
-```
-
 ---
 
 ### Quick check of rclshark
@@ -100,11 +100,11 @@ Now you can safely forget your IP address.:wink:
 
 <!-- rosidl generate -o gen -t py -I$(ros2 pkg prefix --share std_msgs)/.. -->
 
-## 2. rclshark-smi (v1.0.0)​ :turtle: :shark:
+<!-- ## 2. rclshark-smi (v1.0.0)​ :turtle: :shark:
 
 Repository : https://github.com/Ar-Ray-code/rclshark-smi
 
-rclshark2 is not supported.
+rclshark2 is not supported. -->
 
 ## About author
 
