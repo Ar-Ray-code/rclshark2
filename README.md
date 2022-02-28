@@ -27,7 +27,7 @@ Monitor the status of computers on a network using the DDS function of ROS2.
 ## Support
 
 - Ubuntu 20.04 (x86_64, Armv8) (Full support)
-- <del>Raspberry Pi OS (aarch64) (Full support)
+- Raspberry Pi OS (aarch64) (Full support)
 - <del>Windows 11 (x86_64) (rclshark-smi only)
 
 
@@ -69,48 +69,17 @@ colcon build
 source install/setup.bash
 ```
 
-<!-- #### rclshark backend installtion -->
+#### Using install.bash (Automatic start)
 
-<!-- After installation, rclshark will start automatically.
+Installed ROS2
+
+If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
 
 ```bash
-#rclshark installation
-git clone https://github.com/Ar-Ray-code/rclshark.git
-sudo bash rclshark/rclshark/install.bash /opt/ros/foxy
+git clone https://github.com/Ar-Ray-code/rclshark2
+cd rclshark2
+sudo bash install.bash /opt/ros/foxy
 ```
-
-If you want to enable rclshark immediately, run  `$ sudo systemctl start rclshark.service`. -->
-
-<!-- #### Stop rclshark
-
-```bash
-sudo systemctl stop rclshark.service
-```
-
-#### Disable rclshark
-
-```bash
-sudo systemctl disable rclshark.service
-``` -->
-
-<!-- #### uninstall
-
-```bash
-sudo bash ~/ros2_ws/src/rclshark/rclshark/install.bash uninstall
-``` -->
-
-<!-- ### Docker
-
-Docker container is used for viewer testing and communication load testing, but can also be used as a Raspberry Pi replacement for trial purposes.
-
-```bash
-docker pull ray255ar/rclshark
-```
-
-RUN docker container
-```bash
-docker run -it --rm rclshark
-``` -->
 
 ---
 
@@ -137,75 +106,9 @@ Repository : https://github.com/Ar-Ray-code/rclshark-smi
 
 rclshark2 is not supported.
 
-<!-- 
-You can use rclshark to check the hardware status of multiple computers. You don't even need to bother opening htop. Good for you! :blush:
-
-IP addresses are sorted in ascending order and are dynamically added and removed.
-
-![rclshark-smi-docker](images_for_readme/rclshark-smi-docker.png)
-
-###  Installation 
-
-rclshark-smi is installed with rclshark. It can also be built and used as a regular ROS2 package. `ros2 run rclshark_smi rclshark_smi`
-
-```bash
-## Install
-git clone --recursive https://github.com/Ar-Ray-code/rclshark.git
-sudo bash rclshark/rclshark/install.bash /opt/ros/foxy
-## Run rclshark-smi
-rclshark-smi
-``` -->
-
-<!-- ## Demo (v1.0.0)
-
-[YouTube](https://youtu.be/SC5XEYPq4D0)
-
-![](images_for_readme/rclshark-demo.gif)
-
-- rclshark-smi v1.0.2 limits the display to only one time. -->
-
-
-
-<!-- # Extended packages :shark::snake:
-
-## 3. rclshark-bridge
-
-Repository : https://github.com/Ar-Ray-code/rclshark-bridge
-
-rclshark-bridge performs CSV conversion of data in order to use rclshark on other platforms.
-
-## 4. rclshark-Web
-
-Repository : https://github.com/Ar-Ray-code/rclshark-web
-
-rclshark-web is data viewer
-
-#### Installation
-
-Before creating the web server, please set up the Python dependency module and ROS2 environment.
-
-```bash
-git clone https://github.com/Ar-Ray-code/rclshark-web.git
-git clone https://github.com/Ar-Ray-code/rclshark-bridge.git
-pip3 install -r rclshark-web/requirements.txt
-
-source /opt/ros/foxy/setup.bash
-python3 rclshark-bridge/rclshark_bridge/rclshark_bridge.py &
-python3 rclshark-web/flask_main.py
-```
-
-Access `http://localhost:5000`
-
-[Web-GUI Demo Page](https://ar-ray-code.github.io/05_rclshark/rclshark-web/templates/index.html)
-
-![rclshark-web-gui](images_for_readme/rclshark-web-gui.png)
- -->
-
-
 ## About author
 
 - author : [Ar-Ray](https://github.com/Ar-Ray-code)
 - [Twitter](https://twitter.com/Ray255Ar)
 
- <!-- ![](images_for_readme/author_description.png) -->
 
