@@ -47,7 +47,7 @@ rclshark is also a service server, and has a function to Repositoryrt computer s
 
 #### Using install.bash (Automatic start)
 
-Installed ROS2
+Install ROS2 beforehand.
 
 If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
 
