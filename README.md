@@ -1,4 +1,4 @@
-# rclshark​ :turtle::shark:
+# rclshark​2 :turtle::shark:
 
 latest : [v2.0.0](https://github.com/Ar-Ray-code/rclshark2/releases/tag/v2.0.0)
 
@@ -10,31 +10,23 @@ Monitor the status of computers on a network using the DDS function of ROS2.
 
 ![rclshark-title](images_for_readme/rclshark-title.png)
 
-## Documents
-
-- Zenn : https://zenn.dev/array/articles/9fd8cb5941bb94
-- DockerHub : https://hub.docker.com/r/ray255ar/rclshark
-- Computer_msgs : https://github.com/Ar-Ray-code/computer_msgs
-- rclshark-smi : https://github.com/Ar-Ray-code/rclshark-smi
-- Website : https://ar-ray-code.github.io/05_rclshark
-
 ## Requirements
 
-- ROS2 foxy-base [Installation](https://docs.ros.org/en/foxy/Installation.html)
+- ROS2 foxy-base [Installation](https://docs.ros.org/en/foxy/Installation.html), galactic, rolling
 - python3-colcon-common-extensions
 - python3-psutil
 
 ## Support
 
-- Ubuntu 20.04 (x86_64, Armv8) (Full support)
-- Raspberry Pi OS (aarch64) (Full support)
-- <del>Windows 11 (x86_64) (rclshark-smi only)
+- Ubuntu 20.04 (x86_64, Armv8)
+- Raspberry Pi OS (aarch64) 
+- <del>Windows 11 (x86_64) 
 
 
 
 ## 1. rclshark​ :turtle: :shark:
 
-Repository : https://github.com/Ar-Ray-code/rclshark
+Repository : https://github.com/Ar-Ray-code/rclshark2
 
 rclshark is an IP address display system that takes advantage of the DDS publishing nature of the ros2 node to the local network, and can recognize any device with ROS2 installed.
 rclshark is also a service server, and has a function to Repositoryrt computer status using psutil.
@@ -45,9 +37,9 @@ rclshark is also a service server, and has a function to Repositoryrt computer s
 
 ### Installation
 
-#### Using install.bash (Automatic start)
+#### Using install script (Automatic start)
 
-Install ROS2 beforehand.
+Install ROS2-base beforehand.
 
 If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
 
@@ -57,38 +49,14 @@ cd rclshark2
 sudo bash install.bash /opt/ros/foxy
 ```
 
-#### ROS-Foxy Installation
 
-If you want to know how to install ROS-Foxy , please check [ROS2-Foxy-Installation](https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html).
 
-```bash
-# ROS-Foxy & depends Installation
-sudo apt update && sudo apt install curl gnupg2 lsb-release python3-psutil python3-colcon-common-extensions build-essential git
+### rclshark2 quick check
 
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key  -o /usr/share/keyrings/ros-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-
-sudo apt install ros-foxy-base python3-colcon-common-extensions python3-psutil g++ cmake
-```
-
-#### Using colcon build
+Since rclshark2 is an application that uses the basic functions of ROS2, you can find it with the ros2 command.
 
 ```bash
-mkdir ~/rclshark2_dir
-cd ~/rclshark2_dir
-git clone https://github.com/Ar-Ray-code/rclshark2
-colcon build
-source install/setup.bash
-```
-
----
-
-### Quick check of rclshark
-
-Since rclshark is an application that uses the basic functions of ROS2, you can find it with the ros2 command.
-
-```bash
-source ~/rclshark2_dir/install/setup.bash
+source /opt/rclshark2_ws/install/setup.bash
 ros2 topic list | grep rsk
 > /rskc0a80b0f_ubuntu_i9rtx_pub
 ```
@@ -98,17 +66,31 @@ ros2 topic list | grep rsk
 
 Now you can safely forget your IP address.:wink:
 
-<!-- rosidl generate -o gen -t py -I$(ros2 pkg prefix --share std_msgs)/.. -->
 
-<!-- ## 2. rclshark-smi (v1.0.0)​ :turtle: :shark:
 
-Repository : https://github.com/Ar-Ray-code/rclshark-smi
+## rclshark2-viewer
 
-rclshark2 is not supported. -->
+[rclshark2-viewer](https://github.com/Ar-Ray-code/rclshark-viewer) is a GUI tool that replaces rclshark-smi.
+
+GitHub : [Ar-Ray-code/rclshark2-viewer](https://github.com/Ar-Ray-code/rclshark-viewer)
+
+![rclshark2-viewer](images_for_readme/rclshark2-viewer.png)
+
+
+
+
+
+## [rclshark (old)](https://github.com/Ar-Ray-code/rclshark) Documents
+
+- Zenn : https://zenn.dev/array/articles/9fd8cb5941bb94
+- DockerHub : https://hub.docker.com/r/ray255ar/rclshark
+- Computer_msgs : https://github.com/Ar-Ray-code/computer_msgs
+- rclshark-smi : https://github.com/Ar-Ray-code/rclshark-smi
+- Website : https://ar-ray-code.github.io/05_rclshark
+
 
 ## About author
 
 - author : [Ar-Ray](https://github.com/Ar-Ray-code)
 - [Twitter](https://twitter.com/Ray255Ar)
-
 
